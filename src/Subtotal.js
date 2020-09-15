@@ -5,13 +5,18 @@ import { useStateValue } from "./StateProvider";
 
 function Subtotal() {
   const [{ basket }, dispatch] = useStateValue();
+  let price = 0;
+  basket.forEach((item) => {
+    price = price + item.price;
+  });
+
   return (
     <div className="subtotal">
       <CurrencyFormat
         renderText={(value) => (
           <>
             <p>
-              Subtotal ({basket.length} items): <strong>{value}</strong>
+              Subtotal ({basket.length} items): <strong>{price}</strong>
             </p>
             <small className="subtotal__gift">
               <input type="checkbox" />
@@ -20,7 +25,7 @@ function Subtotal() {
           </>
         )}
         decimalScale={2}
-        value={2456981}
+        value={price}
         displayType={"text"}
         thousandSeparator={true}
         prefix={"$"}
