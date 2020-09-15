@@ -21,6 +21,7 @@ function BasketItem() {
             <p>⭐</p>
           ))}
       </div>
+      <div className="basket__score"></div>
     </div>
   );
 }
